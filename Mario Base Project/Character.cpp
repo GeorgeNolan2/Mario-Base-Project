@@ -7,7 +7,7 @@ Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D sta
     M_Position = start_position;
 
     M_Texture = new Texture2D(M_Renderer);
-    if (!M_Texture->LoadFromFile("Images/BackgroundMB.png"))
+    if (M_Texture->LoadFromFile("Images/BackgroundMB.png"))
     {
         std::cout << "AMONG US";
     }
@@ -15,26 +15,38 @@ Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D sta
 
 Character::~Character()
 {
-    // Destructor implementation
+    M_Renderer = nullptr;
 }
 
 void Character::Render()
 {
-    // Render implementation
+    if (M_Texture != nullptr)
+    {
+        M_Texture->Render(M_Position, SDL_FLIP_NONE);
+    }
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-    // Update implementation
+    // Get events
+    SDL_PollEvent(&e);
+
+    // Handle the events
+    switch (e.type)
+    {
+    case SDLK_a:
+        M_Position.x -= 1;
+    case SDLK_d:
+        M_Position.x += 1;
+    }
 }
 
 void Character::SetPosition(Vector2D new_position)
 {
-    // SetPosition implementation
+    M_Position = new_position;
 }
 
 Vector2D Character::GetPosition()
 {
-    // GetPosition implementation
-    return Vector2D(); // Return an appropriate Vector2D instance
+    return M_Position;
 }
