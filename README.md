@@ -1,2 +1,2 @@
 GEC SEMESTER 2
-    :: Mario base project
+This is my version of the mario game
