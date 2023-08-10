@@ -165,7 +165,6 @@
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Sprites\Sprites\Coin.png" />
     <Image Include="Images\BackgroundMB.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

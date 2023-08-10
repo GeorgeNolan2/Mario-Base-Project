@@ -1,7 +1,5 @@
 //Includes
 #include <iostream>
-using namespace :: std;
-
 #include "GameScreen.h"
 #include "GameScreenMng.h"
 #include "Texture2D.h"
@@ -20,6 +18,6 @@ void GameScreen::Render()
 {
 }
 
-void GameScreen::Update()
+void GameScreen::Update(float deltaTime, SDL_Event e)
 {
 }

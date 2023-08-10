@@ -14,7 +14,7 @@ public:
 	~GameScreen();
 
 	virtual void Render();
-	virtual void Update();
+	virtual void Update(float deltaTime, SDL_Event e);
 
 protected:
 	SDL_Renderer* M_Renderer;

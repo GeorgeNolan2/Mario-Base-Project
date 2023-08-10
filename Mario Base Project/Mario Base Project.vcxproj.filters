@@ -68,8 +68,5 @@
     <Image Include="Images\BackgroundMB.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\Sprites\Sprites\Coin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

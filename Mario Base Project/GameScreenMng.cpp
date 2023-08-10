@@ -35,7 +35,7 @@ void GameScreenMng::Render()
 
 void GameScreenMng::Update(float deltaTime, SDL_Event& e)
 {
-    current_screen -> Update();
+    current_screen -> Update(deltaTime, e);
 }
 
 void GameScreenMng::ChangeScreens(Screens new_screen)

@@ -11,6 +11,12 @@ enum Screens
 
 };
 
+enum FACING
+{
+	FACING_LEFT,
+	FACING_RIGHT
+};
+
 struct Vector2D
 {
 	float x;

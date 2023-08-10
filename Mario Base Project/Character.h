@@ -15,6 +15,13 @@ protected:
     SDL_Renderer* M_Renderer;
     Vector2D M_Position;
     Texture2D* M_Texture;
+    bool M_Moving_Left;
+    bool M_Moving_Right;
+
+private:
+    FACING M_Facing_Direction;
+    virtual void MoveLeft(float deltaTime);
+    virtual void MoveRight(float deltaTime);
 
 public:
     Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position);
