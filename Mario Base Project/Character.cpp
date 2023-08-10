@@ -36,11 +36,6 @@ void Character::Render()
     {
         M_Texture->Render(M_Position, SDL_FLIP_HORIZONTAL);
     }
-
-    if (M_Texture != nullptr)
-    {
-        M_Texture->Render(M_Position, SDL_FLIP_NONE);
-    }
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
