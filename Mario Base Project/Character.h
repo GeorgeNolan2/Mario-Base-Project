@@ -17,11 +17,16 @@ protected:
     Texture2D* M_Texture;
     bool M_Moving_Left;
     bool M_Moving_Right;
+    bool M_Jumping;
+    bool M_Can_Jump;
+    float M_Jump_Force;
 
 private:
     FACING M_Facing_Direction;
     virtual void MoveLeft(float deltaTime);
     virtual void MoveRight(float deltaTime);
+    virtual void Gravity(float deltaTime);
+    virtual void Jump();
 
 public:
     Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position);

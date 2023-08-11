@@ -11,6 +11,9 @@ Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D sta
     M_Texture = new Texture2D(M_Renderer);
     M_Moving_Left = false;
     M_Moving_Right = false;
+    M_Jumping = false;
+    M_Can_Jump = true;
+    M_Jump_Force = 0.0f;
 
     // Load the texture from the specified file
     if (!M_Texture->LoadFromFile(imagePath))
@@ -40,6 +43,15 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+    if (M_Jumping)
+    {
+        M_Position.y -= M_Jump_Force * deltaTime;
+        M_Jump_Force -= JUMP_FORCE_DECREMENT * deltaTime;
+
+        if (M_Jump_Force <= 0.0f)
+            M_Jumping = false;
+    }
+
     if (M_Moving_Left)
     {
         MoveLeft(deltaTime);
@@ -49,6 +61,8 @@ void Character::Update(float deltaTime, SDL_Event e)
         MoveRight(deltaTime);
     }
 
+    Gravity(deltaTime);
+
     // Handle the events
     switch (e.type)
     {
@@ -57,11 +71,15 @@ void Character::Update(float deltaTime, SDL_Event e)
         {
         case SDLK_a:
             M_Moving_Left = true;
-            std::cout << "Key A pressed (move left)" << std::endl;
             break;
         case SDLK_d:
             M_Moving_Right = true;
-            std::cout << "Key D pressed (move right)" << std::endl;
+            break;
+        case SDLK_w:
+            if (M_Can_Jump)
+            {
+                Jump();
+            }
             break;
         }
         break;
@@ -71,16 +89,13 @@ void Character::Update(float deltaTime, SDL_Event e)
         {
         case SDLK_a:
             M_Moving_Left = false;
-            std::cout << "Key A released" << std::endl;
             break;
         case SDLK_d:
             M_Moving_Right = false;
-            std::cout << "Key D released" << std::endl;
             break;
         }
         break;
     }
-
 }
 
 void Character::SetPosition(Vector2D new_position)
@@ -99,9 +114,27 @@ void Character::MoveLeft(float distance)
     M_Position.x -= distance * MOVEMENTSPEED;
 }
 
-// Move right function
 void Character::MoveRight(float distance)
 {
     M_Facing_Direction = FACING_RIGHT;
     M_Position.x += distance * MOVEMENTSPEED;
+}
+
+void Character::Gravity(float deltaTime)
+{
+    if(!M_Position.y + 64 <= Screen_Height)
+    {
+        M_Position.y += GRAVITY * deltaTime;
+    }
+    else
+    {
+        M_Can_Jump = true;
+    }
+}
+
+void Character::Jump()
+{
+    M_Jump_Force = INITAL_JUMP_FORCE;
+    M_Jumping = true;
+    M_Can_Jump = false;
 }
