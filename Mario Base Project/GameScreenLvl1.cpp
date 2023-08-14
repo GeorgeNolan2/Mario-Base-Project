@@ -6,6 +6,8 @@ using namespace ::std;
 #include "Texture2D.h"
 #include "GameScreenLvl1.h"
 #include "GameScreenMng.h"
+#include "CharacterMario.h"
+#include "CharacterLuigi.h"
 
 GameScreenLvl1::GameScreenLvl1(SDL_Renderer* renderer)
 	: GameScreen(renderer)
@@ -18,19 +20,23 @@ GameScreenLvl1::~GameScreenLvl1()
 {
 	delete M_background_texture;
 	M_background_texture = nullptr;
-	delete my_character;
-	my_character = nullptr;
+	delete Mario;
+	Mario = nullptr;
+	delete Luigi;
+	Luigi = nullptr;
 }
 
 void GameScreenLvl1::Render() 
 {
 	M_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
-	my_character->Render();
+	Mario->Render();
+	Luigi->Render();
 }
 
 void GameScreenLvl1::Update(float deltaTime, SDL_Event e)
 {
-	my_character->Update(deltaTime, e);
+	Mario->Update(deltaTime, e);
+	Luigi->Update(deltaTime, e);
 }
 
 bool GameScreenLvl1::SetUpLevel()
@@ -42,6 +48,7 @@ bool GameScreenLvl1::SetUpLevel()
 			return false;
 	}
 
-	my_character = new Character(M_Renderer, "Images/Mario.png", Vector2D(64, 330));
+	Mario = new CharacterMario(M_Renderer, "Images/Mario.png", Vector2D(64, 330));
+	Luigi = new CharacterLuigi(M_Renderer, "Images/Luigi.png", Vector2D(128, 330));
 	return true;
 }

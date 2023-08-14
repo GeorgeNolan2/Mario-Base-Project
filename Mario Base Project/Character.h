@@ -26,7 +26,6 @@ private:
     virtual void MoveLeft(float deltaTime);
     virtual void MoveRight(float deltaTime);
     virtual void Gravity(float deltaTime);
-    virtual void Jump();
 
 public:
     Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position);
@@ -35,6 +34,7 @@ public:
     virtual void Update(float deltaTime, SDL_Event e);
     void SetPosition(Vector2D new_position);
     Vector2D GetPosition();
+    virtual void Jump();
 };
 
 #endif Character

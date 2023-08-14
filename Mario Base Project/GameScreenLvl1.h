@@ -16,7 +16,8 @@ class GameScreenLvl1 : public GameScreen
 
 private:
 	Texture2D* M_background_texture;
-	Character* my_character;
+	Character* Mario;
+	Character* Luigi;
 
 public:
 	GameScreenLvl1(SDL_Renderer* renderer);

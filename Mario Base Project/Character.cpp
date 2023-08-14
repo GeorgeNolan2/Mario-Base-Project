@@ -62,40 +62,6 @@ void Character::Update(float deltaTime, SDL_Event e)
     }
 
     Gravity(deltaTime);
-
-    // Handle the events
-    switch (e.type)
-    {
-    case SDL_KEYDOWN: // Handle key press events
-        switch (e.key.keysym.sym)
-        {
-        case SDLK_a:
-            M_Moving_Left = true;
-            break;
-        case SDLK_d:
-            M_Moving_Right = true;
-            break;
-        case SDLK_w:
-            if (M_Can_Jump)
-            {
-                Jump();
-            }
-            break;
-        }
-        break;
-
-    case SDL_KEYUP: // Handle key release events
-        switch (e.key.keysym.sym)
-        {
-        case SDLK_a:
-            M_Moving_Left = false;
-            break;
-        case SDLK_d:
-            M_Moving_Right = false;
-            break;
-        }
-        break;
-    }
 }
 
 void Character::SetPosition(Vector2D new_position)
@@ -122,7 +88,7 @@ void Character::MoveRight(float distance)
 
 void Character::Gravity(float deltaTime)
 {
-    if(!M_Position.y + 64 <= Screen_Height)
+    if(!M_Position.y + 330 <= Screen_Height)
     {
         M_Position.y += GRAVITY * deltaTime;
     }
