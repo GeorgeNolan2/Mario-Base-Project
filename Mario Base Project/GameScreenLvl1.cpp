@@ -8,6 +8,7 @@ using namespace ::std;
 #include "GameScreenMng.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
+#include "Collisions.h"
 
 GameScreenLvl1::GameScreenLvl1(SDL_Renderer* renderer)
 	: GameScreen(renderer)
@@ -37,6 +38,11 @@ void GameScreenLvl1::Update(float deltaTime, SDL_Event e)
 {
 	Mario->Update(deltaTime, e);
 	Luigi->Update(deltaTime, e);
+
+	if (Collision::Instance()->Circle(Mario, Luigi))
+	{
+		cout << "Circle hit" << endl;
+	}
 }
 
 bool GameScreenLvl1::SetUpLevel()

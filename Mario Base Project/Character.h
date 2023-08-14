@@ -20,6 +20,7 @@ protected:
     bool M_Jumping;
     bool M_Can_Jump;
     float M_Jump_Force;
+    float M_Collision_Radius;
 
 private:
     FACING M_Facing_Direction;
@@ -35,6 +36,7 @@ public:
     void SetPosition(Vector2D new_position);
     Vector2D GetPosition();
     virtual void Jump();
+    float GetCollisionRadius();
 };
 
 #endif Character

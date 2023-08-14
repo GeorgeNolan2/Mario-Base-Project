@@ -34,3 +34,19 @@ struct Vector2D
 		y = initial_y;
 	}
 };
+
+struct Rect2D
+{
+	float x;
+	float y;
+	float width;
+	float height;
+
+	Rect2D(float x_pos, float y_pos, float w, float h)
+	{
+		x = x_pos;
+		y = y_pos;
+		width = w;
+		height = h;
+	}
+};

@@ -14,6 +14,7 @@ Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D sta
     M_Jumping = false;
     M_Can_Jump = true;
     M_Jump_Force = 0.0f;
+    M_Collision_Radius = 15.0f;
 
     // Load the texture from the specified file
     if (!M_Texture->LoadFromFile(imagePath))
@@ -88,7 +89,7 @@ void Character::MoveRight(float distance)
 
 void Character::Gravity(float deltaTime)
 {
-    if(!M_Position.y + 330 <= Screen_Height)
+    if(!M_Position.y + 64 <= Screen_Height)
     {
         M_Position.y += GRAVITY * deltaTime;
     }
@@ -96,6 +97,11 @@ void Character::Gravity(float deltaTime)
     {
         M_Can_Jump = true;
     }
+}
+
+float Character::GetCollisionRadius()
+{
+    return M_Collision_Radius;
 }
 
 void Character::Jump()
