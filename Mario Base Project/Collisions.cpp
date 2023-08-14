@@ -3,6 +3,10 @@
 
 Collision* ::Collision::M_Instance = nullptr;
 
+Collision::Collision() 
+{
+}
+
 Collision::~Collision()
 {
 	M_Instance = nullptr;
@@ -27,9 +31,18 @@ bool Collision::Circle(Character* Mario, Character* Luigi)
 
 bool Collision::Box(Rect2D rect1, Rect2D rect2)
 {
-	if (rect1.x + (rect1.width / 2) > rect2.x && rect1.x + (rect1.width / 2) < rect2 + rect2.width && rect1.y(rect1.height / 2) > rect2.y && rect1.y + (rect1.height / 2) < rect2.y + rect2.height)
-	{
-		return true;
-	}
-	return false;
+    float halfWidth1 = rect1.width / 2;
+    float halfHeight1 = rect1.height / 2;
+    float halfWidth2 = rect2.width / 2;
+    float halfHeight2 = rect2.height / 2;
+
+    float centerX1 = rect1.x + halfWidth1;
+    float centerY1 = rect1.y + halfHeight1;
+    float centerX2 = rect2.x + halfWidth2;
+    float centerY2 = rect2.y + halfHeight2;
+
+    bool overlapX = abs(centerX1 - centerX2) < halfWidth1 + halfWidth2;
+    bool overlapY = abs(centerY1 - centerY2) < halfHeight1 + halfHeight2;
+
+    return overlapX && overlapY;
 }
