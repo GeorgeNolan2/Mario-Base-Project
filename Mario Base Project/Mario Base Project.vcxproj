@@ -148,6 +148,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameScreenLvl1.cpp" />
     <ClCompile Include="GameScreenMng.cpp" />
+    <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="Mario Base Project.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenLvl1.h" />
     <ClInclude Include="GameScreenMng.h" />
+    <ClInclude Include="LevelMap.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>

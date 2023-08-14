@@ -13,6 +13,7 @@ using namespace ::std;
 GameScreenLvl1::GameScreenLvl1(SDL_Renderer* renderer)
 	: GameScreen(renderer)
 {
+	m_level_map = nullptr;
 	M_background_texture = new Texture2D(renderer);
 	SetUpLevel();
 }
@@ -54,7 +55,34 @@ bool GameScreenLvl1::SetUpLevel()
 			return false;
 	}
 
-	Mario = new CharacterMario(M_Renderer, "Images/Mario.png", Vector2D(64, 330));
-	Luigi = new CharacterLuigi(M_Renderer, "Images/Luigi.png", Vector2D(128, 330));
+	Mario = new CharacterMario(M_Renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map);
+	Luigi = new CharacterLuigi(M_Renderer, "Images/Luigi.png", Vector2D(128, 330), m_level_map);
+
 	return true;
+}
+
+void GameScreenLvl1::SetLevelMap()
+{
+	int map[MAP_HEIGHT][MAP_WIDTH] = {
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0 },
+	{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }, };
+
+	if (m_level_map != nullptr)
+	{
+		delete m_level_map;
+	}
+
+	m_level_map = new LevelMap(map);
+
 }

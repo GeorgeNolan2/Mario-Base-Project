@@ -8,7 +8,7 @@
 class CharacterMario : public Character {
 
 public:
-    CharacterMario(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position);
+    CharacterMario(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position, LevelMap* map);
     ~CharacterMario();
     virtual void Render();
     virtual void Update(float deltaTime, SDL_Event e) override;

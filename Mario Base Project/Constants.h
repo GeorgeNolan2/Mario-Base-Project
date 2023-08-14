@@ -2,6 +2,8 @@
 
 #define Screen_Width 512
 #define Screen_Height 416
+#define MAP_WIDTH 16
+#define MAP_HEIGHT 13
 #define MOVEMENTSPEED 50.0f
 #define GRAVITY 260.0F
 #define JUMP_FORCE_DECREMENT 400.0F
