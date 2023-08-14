@@ -49,6 +49,6 @@ bool GameScreenLvl1::SetUpLevel()
 	}
 
 	Mario = new CharacterMario(M_Renderer, "Images/Mario.png", Vector2D(64, 330));
-	Luigi = new CharacterMario(M_Renderer, "Images/Luigi.png", Vector2D(128, 330));
+	Luigi = new CharacterLuigi(M_Renderer, "Images/Luigi.png", Vector2D(128, 330));
 	return true;
 }

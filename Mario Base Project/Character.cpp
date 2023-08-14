@@ -88,7 +88,7 @@ void Character::MoveRight(float distance)
 
 void Character::Gravity(float deltaTime)
 {
-    if(!M_Position.y + 64 <= Screen_Height)
+    if(!M_Position.y + 330 <= Screen_Height)
     {
         M_Position.y += GRAVITY * deltaTime;
     }
