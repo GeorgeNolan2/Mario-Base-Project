@@ -2,8 +2,8 @@
 #include "CharacterLuigi.h"
 #include "Texture2D.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position)
-    : Character(Renderer, imagePath, start_position)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position, LevelMap* map)
+    : Character(Renderer, imagePath, start_position, map)
 {
     M_Renderer = Renderer;
     M_Position = start_position;

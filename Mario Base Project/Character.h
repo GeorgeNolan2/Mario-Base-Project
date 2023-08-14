@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <string>
 #include "Commons.h"
+#include "LevelMap.h"
 
 #ifndef Character
 
@@ -15,6 +16,7 @@ protected:
     SDL_Renderer* M_Renderer;
     Vector2D M_Position;
     Texture2D* M_Texture;
+    LevelMap* M_Current_Level_Map;
     bool M_Moving_Left;
     bool M_Moving_Right;
     bool M_Jumping;
@@ -29,7 +31,7 @@ private:
     virtual void Gravity(float deltaTime);
 
 public:
-    Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position);
+    Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position, LevelMap* map);
     ~Character();
     virtual void Render();
     virtual void Update(float deltaTime, SDL_Event e);

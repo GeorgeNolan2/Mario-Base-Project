@@ -3,12 +3,13 @@
 #include "Commons.h"
 #include "Constants.h"
 
-Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position)
+Character::Character(SDL_Renderer* Renderer, std::string imagePath, Vector2D start_position, LevelMap* map)
 {
     M_Renderer = Renderer;
     M_Position = start_position;
     M_Facing_Direction = FACING_RIGHT;
     M_Texture = new Texture2D(M_Renderer);
+    M_Current_Level_Map = map;
     M_Moving_Left = false;
     M_Moving_Right = false;
     M_Jumping = false;
